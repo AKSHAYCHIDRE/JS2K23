@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>20 Dec 2023</title>
+  </head>
+  <body>
+    <h2>How to check the output in js</h2>
+    <ul style="border-bottom: 1px solid; padding-bottom: 10px">
+      <li>console.log(a);</li>
+      <li>document.write(b);</li>
+      <li>alert(a)</li>
+      <li>document.getElementById("name").innerHTML = "Akshay Chidre"</li>
+    </ul>
+
+    <h2>Data Type List</h2>
+    <ul style="border-bottom: 1px solid; padding-bottom: 10px">
+      <li>string <b>const string = "string"</b></li>
+      <li>number <b>const number = 100;</b></li>
+      <li>array <b>const array = ["test1", "test2","test3"]</b></li>
+      <li>
+        object<b>const object = {id: 2, name:"aksay", surname="chidre"}</b>
+      </li>
+      <li>null <b>const null = null</b></li>
+      <li>undefined <b>const undefined;</b></li>
+      <li>boolen <b>const boolen : true/false</b></li>
+      <li>bigInit <b>const bigInit = 11123412341234123232231;</b></li>
+      <li>symbol</li>
+    </ul>
+
+    <h2>Symbol DataType</h2>
+
+    <p>Every time we invoke Symbol(), we get a new and unique symbol</p>
+    <p>
+      very difficult to unique key created before introduce symbol data type
+    </p>
+    <div>
+      <p>const sym1 = Symbol();</p>
+      <p>const sym2 = Symbol();</p>
+      <p>console.log(s1 === s2); // false</p>
+    </div>
+    <div id="name"></div>
+    <h1 class="test"></h1>
+    <script>
+      var a = 10;
+      let b = 102;
+      const c = 123;
+
+      console.log(a);
+      document.write(b);
+      alert(b);
+      document.getElementById("name").innerHTML = "Akshay Chidre with ID ";
+      // document.getElementsByClassName("test").innerHTML = "afasdfas";
+      // document.getElementsByName("test").innerHTML =
+      //   "chidre akshay with class name";
+    </script>
+  </body>
+</html>
