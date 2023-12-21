@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyword let var and const</title>
+  </head>
+  <body>
+    <h1>Javascript Keyword</h1>
+    <h2>Var Keyword</h2>
+    <b>var is global scoped it can be re-declred and updated</b>
+    <div>
+      <p>var globalVal = 10;</p>
+      <p>function test() {</p>
+      <p>console.log("Printing gloablVal",globalVal); }</p>
+      <p>test(); //10</p>
+    </div>
+    <script>
+      var varVariable = 100;
+      function gloablScoped() {
+        var varVariable = 13200;
+        var updateVariable = 12;
+        var newUpdateVariable = 12;
+        var newValue = updateVariable + newUpdateVariable;
+        var varVariable = newValue;
+        console.log(varVariable);
+      }
+      gloablScoped(); // 24
+
+      function functionScoped() {
+        var b = 100;
+        console.log(b);
+      }
+      var b = 500;
+      console.log(b);
+      functionScoped(); // 500
+
+      var v1 = 1;
+      v1 = 30;
+      console.log(v1); // 30
+
+      var v1 = 1;
+
+      var v1 = 30;
+
+      console.log(v1); // 30
+
+      // Let Keyword
+
+      let v1 = 1;
+      v1 = 30;
+      console.log(v1);
+
+      let v1 = 1;
+      let v1 = 30;
+      console.log(v1); // SyntaxError
+
+      // Const Keyword
+      const v1 = 1;
+      v1 = 30;
+      console.log(v1);
+
+      const v1 = 1;
+      const v1 = 30;
+      console.log(v1); // SyntaxError
+    </script>
+  </body>
+</html>
