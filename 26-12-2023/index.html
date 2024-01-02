@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ladder</title>
+  </head>
+  <body>
+    <script>
+      const time = new Date().getHours();
+      if (time < 10) {
+        console.log("Good Morning");
+      } else if (time < 20) {
+        console.log("Good Day");
+      } else {
+        console.log("Good Evening");
+      }
+
+      const a = 10;
+      const b = 20;
+      if (a + b > 230) {
+        console.log("this big value");
+      } else {
+        console.log("this is log value");
+      }
+
+      console.error("This is error message for the console error");
+      console.info("This is info console message");
+      console.warn("This is warning message for the console warn");
+    </script>
+
+</html>

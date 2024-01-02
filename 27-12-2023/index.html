@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>function</title>
+  </head>
+  <body>
+    <script>
+      let userName = "Jhone";
+
+      function myFunction() {
+        let message = "Hello, " + userName;
+        console.log(message);
+      }
+      myFunction();
+      // -------------------------// -------------------------// -------------------------
+      let surname = "chidre";
+      function surnameFunction() {
+        surname = "jadhav";
+        let fullName = "hello," + surname;
+        console.log(fullName);
+      }
+      console.log(surname);
+      surnameFunction();
+      console.log(surname);
+      // -------------------------// -------------------------// -------------------------
+      function parametersFunction(a, b) {
+        console.log("parameterFunction", a + b);
+      }
+      parametersFunction("Hello,", "Chidre");
+      // -------------------------// -------------------------// -------------------------
+      function showMessage(x, text = "this is text message") {
+        console.log(x + ": " + text);
+      }
+      showMessage("hello");
+      // -------------------------// -------------------------// -------------------------
+      function customFunction(s, d, g) {
+        console.log(s + d + g, "Asfas");
+      }
+      const s = 100;
+      const d = 100;
+      const g = 100;
+      customFunction();
+    </script>
+  </body>
+</html>
