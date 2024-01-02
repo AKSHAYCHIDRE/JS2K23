@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array and Object</title>
+  </head>
+  <body>
+    <h2>Array</h2>
+    <div>
+      <p>
+        const namesArray = [ "akshay", "baldev", "trushant", "abhijit",
+        "pravin",10];
+      </p>
+      <p>console.log(namesArray);</p>
+      <p>console.log(namesArray.length); // 5</p>
+      <p>console.log(namesArray[0]); // akshay</p>
+      <p>console.log(namesArray[5]); // 10</p>
+      <p>console.log(namesArray[-1]); // baldev</p>
+      <p>console.log(namesArray[1]); // undifined</p>
+      <p>
+        let arr = [ "Apple", { name: "John" }, true, function () {
+        alert("hello"); }, ];
+      </p>
+      <p>console.log(arr[1]); console.log(arr[1].name); // John</p>
+    </div>
+    <h2>Array of Object</h2>
+
+    <script>
+      const namesArray = [
+        "akshay",
+        "baldev",
+        "trushant",
+        "abhijit",
+        "pravin",
+        10,
+      ];
+      console.log(namesArray);
+      console.log(namesArray.length); // 5
+      console.log(namesArray[0]); // akshay
+      console.log(namesArray[5]); // 10
+      console.log(namesArray[-1]); // baldev
+      console.log(namesArray[1]); // undifined
+
+      let arr = [
+        "Apple",
+        { name: "John" },
+        true,
+        function () {
+          alert("hello");
+        },
+      ];
+      console.log(arr[1]);
+      console.log(arr[1].name); // John
+
+      const arrayOfObject = [{ name: "akshay", surname: "chidre" }];
+      console.log(arrayOfObject[0].surname); // chidre
+      console.log(arrayOfObject[0].name); // akshay
+    </script>
+  </body>
+</html>
