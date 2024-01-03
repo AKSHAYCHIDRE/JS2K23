@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example</title>
+  </head>
+  <body>
+    <h2>
+      1. Find Largest number from array <b>const arry= [60,20,80,40] - 80</b>
+    </h2>
+    <h2>
+      2. Find smallest number from array <b>const arry= [60,20,80,40]- 20</b>
+    </h2>
+    <h2>3. Calculate sum of array <b>const arry= [60,20,80,40] - 200</b></h2>
+    <h2>4. Find the prime number 1 to 100</h2>
+    <h2>5. Create a Calculate</h2>
+    <script>
+      const largeNumber = [60, 20, 80, 40];
+      let max = largeNumber[0];
+      for (let i = 0; i < largeNumber.length; i++) {
+        if (largeNumber[i] > max) {
+          max = largeNumber[i];
+        }
+      }
+      console.log(max, "max");
+    </script>
+    <!-- <script>
+      const smallNumber = [60, 20, 80, 40];
+      let min = smallNumber[0];
+      for (let i = 0; i < smallNumber.length; i++) {
+        if (smallNumber[i] < min) {
+          min = smallNumber[i];
+        }
+      }
+      console.log(min, "min");
+    </script>
+    <script>
+      const sumArray = [60, 20, 80, 40];
+      let addition = 0;
+      for (let i = 0; i < sumArray.length; i++) {
+        addition += sumArray[i];
+      }
+      console.log(addition);
+      console.log({ sumArray });
+    </script>
+    <script>
+      for (let i = 1; i <= 100; i++) {
+        {
+          var flag = 0;
+          for (var j = 2; j <= i / 2; j++) {
+            if (i % 2 == 0) {
+              flag = 1;
+              break;
+            }
+          }
+          if (flag == 0) {
+            document.write(i + "<br>");
+          }
+        }
+      }
+    </script> -->
+  </body>
+</html>
