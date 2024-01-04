@@ -49,40 +49,32 @@
   <body>
     <div class="calculator-wrapper">
       <h2>Calculator</h2>
-      <input type="number" id="num1" />
+      <input type="text" id="num1" />
       <input type="text" id="num2" />
       <div class="button-wrapper">
-        <button onclick="addition()">Addition</button>
-        <button onclick="subraction()">Subraction</button>
-        <button onclick="multipalication()">Multipalication</button>
-        <button onclick="divided()">Divided</button>
+        <button onclick="calculation('addition')">Addition</button>
+        <button onclick="calculation('subraction')">Subraction</button>
+        <button onclick="calculation('multipalication')">
+          Multipalication
+        </button>
+        <button onclick="calculation('divided')">Divided</button>
       </div>
       <div class="label">Result: <span id="result"></span></div>
     </div>
     <script>
-      function addition() {
+      function calculation(option) {
         const number1 = document.getElementById("num1").value;
         const number2 = document.getElementById("num2").value;
-        const add = Number(number1) + Number(number2);
-        document.getElementById("result").innerHTML = add;
-      }
-      function subraction() {
-        const number3 = document.getElementById("num1").value;
-        const number4 = document.getElementById("num2").value;
-        const sub = number3 - number4;
-        document.getElementById("result").innerHTML = sub;
-      }
-      function multipalication() {
-        const number5 = document.getElementById("num1").value;
-        const number6 = document.getElementById("num2").value;
-        const multi = number5 * number6;
-        document.getElementById("result").innerHTML = multi;
-      }
-      function divided() {
-        const number7 = document.getElementById("num1").value;
-        const number8 = document.getElementById("num2").value;
-        const divi = number7 / number8;
-        document.getElementById("result").innerHTML = divi;
+        const result = document.getElementById("result");
+        if (option == "addition") {
+          result.innerHTML = Number(number1) + Number(number2);
+        } else if (option == "subraction") {
+          result.innerHTML = number1 - number2;
+        } else if (option == "multipalication") {
+          result.innerHTML = number1 * number2;
+        } else if (option == "divided") {
+          result.innerHTML = number1 / number2;
+        }
       }
     </script>
   </body>

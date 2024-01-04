@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        background-color: red;
+        height: 200px;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="checkbox" id="my-checkbox" />
+    <input type="text" id="number" />
+    <button onclick="checkNumber()">check the number is odd or even</button>
+    <div id="value"></div>
+    <div class="box"></div>
+    <script>
+      document.getElementById("my-checkbox").checked = true;
+      function checkNumber() {
+        const checkNumberValue = document.getElementById("number").value;
+        if (checkNumberValue % 2 == 0) {
+          document.getElementById("value").innerHTML = "This is odd number";
+        } else {
+          document.getElementById("value").innerHTML = "This is even number";
+        }
+      }
+      document.querySelector(".box").style.backgroundColor = "pink";
+
+      for (let i = 0; i <= 100; i += 2) {
+        document.write(i);
+        console.log(i);
+      }
+
+      const oddArray = [23, 434, 02, 01, 57, 78, 100, 3222];
+
+      let oddNumber = oddArray[0];
+
+      for (let i = 0; i < oddArray.length; i++) {
+        if (oddArray[i] % 2 != 0) {
+          oddNumber = oddArray[i];
+          console.log(oddNumber, "oddNumber");
+        }
+      }
+    </script>
+  </body>
+</html>
