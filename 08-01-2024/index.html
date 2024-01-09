@@ -48,15 +48,6 @@
   </style>
   <body>
     <div id="root"></div>
-    <!-- <div class="calculator-wrapper">
-          <div class="button-wrapper">
-            <button onclick="addition()">Addition</button>
-            <button onclick="subraction()">Subraction</button>
-            <button onclick="multipalication()">Multipalication</button>
-            <button onclick="divided()">Divided</button>
-          </div>
-          <div class="label">Result: <span id="result"></span></div>
-        </div> -->
     <script>
       const calculatorWrapper = document.createElement("div");
       calculatorWrapper.setAttribute("class", "calculator-wrapper");
@@ -65,15 +56,23 @@
       const inputNum1 = document.createElement("input");
       inputNum1.setAttribute("type", "text");
       inputNum1.setAttribute("id", "num1");
+      inputNum1.setAttribute("class", "input");
       const inputNum2 = document.createElement("input");
       inputNum2.setAttribute("type", "text");
       inputNum2.setAttribute("id", "num2");
+      inputNum2.setAttribute("class", "input");
+      const inputNum3 = document.createElement("input");
+      inputNum3.setAttribute("type", "text");
+      inputNum3.setAttribute("id", "num3");
+      inputNum3.setAttribute("class", "input");
       calculatorWrapper.appendChild(heading);
       calculatorWrapper.appendChild(inputNum1);
       calculatorWrapper.appendChild(inputNum2);
+      calculatorWrapper.appendChild(inputNum3);
 
       const buttonWrapper = document.createElement("div");
       buttonWrapper.setAttribute("class", "button-wrapper");
+      buttonWrapper.classList.add("xyz");
       const btnAddition = document.createElement("button");
       btnAddition.innerHTML = "Addition";
       const btnSubtraction = document.createElement("button");
@@ -94,64 +93,82 @@
       calculatorWrapper.appendChild(result);
       document.getElementById("root").appendChild(calculatorWrapper);
 
-      function addition() {
-        const number1 = document.getElementById("num1").value;
-        const number2 = document.getElementById("num2").value;
-        const add = Number(number1) + Number(number2);
-        document.getElementById("result").innerHTML = add;
+      const inputClassName = document.getElementsByClassName("input");
+      inputClassName[1].style.backgroundColor = "red";
+      for (let i = 0; i < inputClassName.length; i++) {
+        if (inputClassName[i].id == "num3") {
+          inputClassName[i].style.display = "none";
+        }
       }
-      function subraction() {
-        const number3 = document.getElementById("num1").value;
-        const number4 = document.getElementById("num2").value;
-        const sub = number3 - number4;
-        document.getElementById("result").innerHTML = sub;
-      }
-      function multipalication() {
-        const number5 = document.getElementById("num1").value;
-        const number6 = document.getElementById("num2").value;
-        const multi = number5 * number6;
-        document.getElementById("result").innerHTML = multi;
-      }
-      function divided() {
-        const number7 = document.getElementById("num1").value;
-        const number8 = document.getElementById("num2").value;
-        const divi = number7 / number8;
-        document.getElementById("result").innerHTML = divi;
-      }
-
-      // function calculation(option) {
+      // function addition() {
       //   const number1 = document.getElementById("num1").value;
       //   const number2 = document.getElementById("num2").value;
-      //   const result = document.getElementById("result");
-      //   if (option == "addition") {
-      //     result.innerHTML = Number(number1) + Number(number2);
-      //   } else if (option == "subtraction") {
-      //     result.innerHTML = number1 - number2;
-      //   } else if (option == "multiplication") {
-      //     result.innerHTML = number1 * number2;
-      //   } else if (option == "division") {
-      //     result.innerHTML = number1 - number2;
-      //   }
-      //   switch (option) {
-      //     case "addition":
-      //       result.innerHTML = Number(number1) + Number(number2);
-      //       break;
-      //     case "subtraction":
-      //       result.innerHTML = number1 - number2;
-      //       break;
-      //     case "multiplication":
-      //       result.innerHTML = number1 * number2;
-      //       break;
-      //     case "division":
-      //       result.innerHTML = number1 / number2;
-      //       break;
-      //   }
+      //   const add = Number(number1) + Number(number2);
+      //   document.getElementById("result").innerHTML = add;
+      // }
+      // function subraction() {
+      //   const number3 = document.getElementById("num1").value;
+      //   const number4 = document.getElementById("num2").value;
+      //   const sub = number3 - number4;
+      //   document.getElementById("result").innerHTML = sub;
+      // }
+      // function multipalication() {
+      //   const number5 = document.getElementById("num1").value;
+      //   const number6 = document.getElementById("num2").value;
+      //   const multi = number5 * number6;
+      //   document.getElementById("result").innerHTML = multi;
+      // }
+      // function divided() {
+      //   const number7 = document.getElementById("num1").value;
+      //   const number8 = document.getElementById("num2").value;
+      //   const divi = number7 / number8;
+      //   document.getElementById("result").innerHTML = divi;
       // }
 
-      btnAddition.addEventListener("click", addition);
-      btnSubtraction.addEventListener("click", subraction);
-      btnMultiplication.addEventListener("click", multipalication);
-      btnDivision.addEventListener("click", divided);
+      function calculation(option) {
+        const number1 = document.getElementById("num1").value;
+        const number2 = document.getElementById("num2").value;
+        const result = document.getElementById("result");
+        if (option == "addition") {
+          result.innerHTML = Number(number1) + Number(number2);
+        } else if (option == "subtraction") {
+          result.innerHTML = number1 - number2;
+        } else if (option == "multiplication") {
+          result.innerHTML = number1 * number2;
+        } else if (option == "division") {
+          result.innerHTML = number1 - number2;
+        }
+        // switch (option) {
+        //   case "addition":
+        //     result.innerHTML = Number(number1) + Number(number2);
+        //     break;
+        //   case "subtraction":
+        //     result.innerHTML = number1 - number2;
+        //     break;
+        //   case "multiplication":
+        //     result.innerHTML = number1 * number2;
+        //     break;
+        //   case "division":
+        //     result.innerHTML = number1 / number2;
+        //     break;
+        // }
+      }
+
+      btnAddition.addEventListener("click", function () {
+        calculation("addition");
+      });
+      btnSubtraction.addEventListener("click", function () {
+        calculation("subtraction");
+      });
+      btnMultiplication.addEventListener("click", function () {
+        calculation("multiplication");
+      });
+      btnDivision.addEventListener("click", function () {
+        calculation("division");
+      });
+      // btnSubtraction.addEventListener("click", calculation);
+      // btnMultiplication.addEventListener("click", calculation);
+      // btnDivision.addEventListener("click", calculation);
       // btnSubtraction.addEventListener("click", calculation("subtraction"));
       // btnMultiplication.addEventListener(
       //   "click",
