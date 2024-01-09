@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <h2>Basic Calculation example using ladder method and switch case</h2>
+    <div class="calculatorWrapper">
+      <input type="text" id="num1" />
+      <input type="text" id="num2" />
+      <button onclick="calculation('addition')">Addition</button>
+      <button onclick="calculation('subtraction')">Subtraction</button>
+      <button onclick="calculation('multiplication')">Multiplication</button>
+      <button onclick="calculation('division')">Division</button>
+      <span>result</span>
+      <div id="result"></div>
+    </div>
+    <script>
+      function calculation(option) {
+        const number1 = document.getElementById("num1").value;
+        const number2 = document.getElementById("num2").value;
+        const result = document.getElementById("result");
+        // if (option == "addition") {
+        //   result.innerHTML = Number(number1) + Number(number2);
+        // } else if (option == "subtraction") {
+        //   result.innerHTML = number1 - number2;
+        // } else if (option == "multiplication") {
+        //   result.innerHTML = number1 * number2;
+        // } else if (option == "division") {
+        //   result.innerHTML = number1 - number2;
+        // }
+        switch (option) {
+          case "addition":
+            result.innerHTML = Number(number1) + Number(number2);
+            break;
+          case "subtraction":
+            result.innerHTML = number1 - number2;
+            break;
+          case "multiplication":
+            result.innerHTML = number1 * number2;
+            break;
+          case "division":
+            result.innerHTML = number1 / number2;
+            break;
+        }
+      }
+      for (let i = 1; i <= 10; i++) {
+        let row = "7 * " + i + " =" + 7 * i;
+        document.write("</br>" + row);
+      }
+    </script>
+  </body>
+</html>
