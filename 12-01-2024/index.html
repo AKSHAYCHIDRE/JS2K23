@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice html using in js</title>
+  </head>
+  <body>
+    <script>
+      const calculatorWrapper = document.createElement("div");
+      const inputOne = document.createElement("input");
+      const inputTwo = document.createElement("input");
+      calculatorWrapper.appendChild(inputOne);
+      calculatorWrapper.appendChild(inputTwo);
+      const root = document.createElement("div");
+      root.setAttribute("id", "root");
+      root.appendChild(calculatorWrapper);
+      document.body.appendChild(root);
+
+      const buttonWrapper = document.createElement("div");
+      const addition = document.createElement("button");
+      addition.innerHTML = "Addition";
+      const subtraction = document.createElement("button");
+      subtraction.innerHTML = "Subtraction";
+      const multipalication = document.createElement("button");
+      multipalication.innerHTML = "Multipalication";
+      const division = document.createElement("button");
+      division.innerHTML = "Division";
+      addition.setAttribute("class", "button");
+      subtraction.setAttribute("class", "button");
+      multipalication.setAttribute("class", "button");
+      division.setAttribute("class", "button");
+      buttonWrapper.appendChild(addition);
+      buttonWrapper.appendChild(subtraction);
+      buttonWrapper.appendChild(multipalication);
+      buttonWrapper.appendChild(division);
+      calculatorWrapper.appendChild(buttonWrapper);
+    </script>
+  </body>
+</html>

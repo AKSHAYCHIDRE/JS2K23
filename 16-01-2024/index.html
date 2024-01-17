@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event</title>
+    <style>
+      #onmousemove {
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="onClick()">Click Me</button>
+    <div id="demo"></div>
+    <div id="ondblclick"></div>
+    <div style="border: 1px solid black; text-align: center">
+      <p>Right-click in this box!</p>
+      <p>Context menu will show.</p>
+    </div>
+    <br />
+    <div id="myDiv" style="border: 1px solid black; text-align: center">
+      <p>Right-click in this box!</p>
+      <p>Context menu is disabled.</p>
+    </div>
+    <p ondblclick="ondblClick()">
+      Double-click this paragraph to trigger a function.
+    </p>
+    <div
+      id="onMouseUpAndDown"
+      onmousedown="onMouseDown()"
+      onmouseup="onMouseUp()"
+    >
+      orem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it
+    </div>
+    <h2>The onmousemove Event</h2>
+    <div
+      id="onmousemove"
+      onmousemove="onMouseMove(event)"
+      onmouseout="clearCoor()"
+    ></div>
+    <input type="text" oncopy="onCopyText()" value="Try to copy me" />
+
+    <p id="copyText"></p>
+    <input type="text" oncut="onCutText()" value="Try to cut this text" />
+
+    <p id="cutText"></p>
+    <input type="search" id="myInput" onsearch="searchFunction()" />
+    <p id="serch"></p>
+    <form onreset="resetFunction()">
+      Enter name: <input type="text" />
+      <input type="reset" />
+    </form>
+    <form>
+      Enter blur name:
+      <input type="text" onblur="blurFunction()" id="name" />
+    </form>
+    <form>
+      Enter foucs name:
+      <input type="text" onfocus="focusFunction()" id="focus" />
+    </form>
+    <form>
+      Enter foucsIn name:
+      <input type="text" onfocus="focusInFunction()" id="focusIn" />
+    </form>
+
+    <script>
+      function onClick() {
+        document.getElementById("demo").innerHTML = "Hello World";
+      }
+      const div = document.getElementById("myDiv");
+      div.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+      });
+      function ondblClick() {
+        document.getElementById("ondblclick").innerHTML += " ondblClick";
+      }
+      function onMouseDown() {
+        document.getElementById("onMouseUpAndDown").style.color = "red";
+      }
+      function onMouseUp() {
+        document.getElementById("onMouseUpAndDown").style.color = "blue";
+      }
+      function onMouseMove(e) {
+        let x = e.clientX;
+        let y = e.clientY;
+        let coor = "Coordinates: (" + x + "," + y + ")";
+        document.getElementById("onmousemove").innerHTML = coor;
+      }
+      function clearCoor() {
+        document.getElementById("onmousemove").innerHTML = "";
+      }
+      function onCopyText() {
+        document.getElementById("copyText").innerHTML = "You copied text!";
+      }
+      function onCutText() {
+        document.getElementById("cutText").innerHTML = "You cutted text!";
+      }
+      function searchFunction() {
+        var x = document.getElementById("myInput");
+        document.getElementById("serch").innerHTML =
+          "You are searching for: " + x.value;
+      }
+      function blurFunction() {
+        let x = document.getElementById("name");
+        x.value = x.value.toUpperCase();
+      }
+      function focusFunction(x) {
+        let y = document.getElementById("focus");
+        y.value = x.value.toUpperCase();
+      }
+      function focusInFunction(x) {
+        let z = document.getElementById("focusIn");
+        z.value = x.value.toUpperCase();
+      }
+    </script>
+  </body>
+</html>

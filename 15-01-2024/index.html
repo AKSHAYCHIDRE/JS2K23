@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String Method</title>
+  </head>
+  <body>
+    <p id="charAt"></p>
+    <p id="atMethod"></p>
+    <p id="slice"></p>
+    <p id="substring"></p>
+    <script>
+      const charAtText = "Hello World";
+      document.getElementById("charAt").innerHTML = charAtText.charAt(0);
+      const name = "Akshay Chidre";
+      let letter = name.at(1);
+      document.getElementById("atMethod").innerHTML = letter;
+
+      const fruits = "Apple, Banana, Kiwi";
+      const fruitsSlice = fruits.slice(5, 12);
+      document.getElementById("slice").innerHTML = fruitsSlice;
+
+      const nameList = "Akshay, suraj, rohit";
+      const nameSubstring = nameList.substring(1, 3);
+      document.getElementById("substring").innerHTML = nameSubstring;
+
+      var g = 0;
+      g = 1 && g++;
+      console.log(g);
+
+      var a = 1.2;
+      console.log(typeof a);
+    </script>
+  </body>
+</html>

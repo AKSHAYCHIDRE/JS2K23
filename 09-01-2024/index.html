@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Query Selector</title>
+  </head>
+  <body>
+    <h2 class="example">A heading</h2>
+    <p class="example">I am a akshay chidre.</p>
+    <p class="example">I am a student.</p>
+
+    <script>
+      document.querySelector(".example").style.backgroundColor = "red";
+      const exampleList = document.querySelectorAll("p.example");
+      // exampleList[1].style.backgroundColor = "pink";
+
+      for (i = 0; i < exampleList.length; i++) {
+        if (exampleList[i].classList.contains("example")) {
+          exampleList[i].style.backgroundColor = "pink";
+        }
+      }
+    </script>
+  </body>
+</html>

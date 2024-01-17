@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <button
+        style="height: 100px"
+        onclick="handlClickMe()"
+        onmouseover="handleMouseOver()"
+        onmouseout="handleMouseOut()"
+        onmousemove="handleMouseMove()"
+        onmouseup="handleMouseUp()"
+        onmousedown="handleMouseDown()"
+        onfocus="handleOnFocus()"
+      >
+        Click Me
+      </button>
+      <input
+        type="text"
+        onfocus="handleOnFocus()"
+        onchange="handleOnChange()"
+        onkeydown="handleOnKeyDown()"
+      />
+    </div>
+    <script>
+      function handlClickMe() {
+        console.log("handlClickMe");
+        localStorage.setItem("age", "27");
+      }
+      function handleMouseOver() {
+        console.log("handleMouseOver");
+      }
+      function handleMouseOut() {
+        console.log("handleMouseOut");
+      }
+      function handleMouseMove() {
+        console.log("handleMouseMove");
+      }
+      function handleMouseUp() {
+        console.log("handleMouseUp");
+      }
+      function handleMouseDown() {
+        console.log("handleMouseDown");
+      }
+      function handleOnChange() {
+        console.log("handleOnChange");
+      }
+      function handleOnKeyDown() {
+        console.log("handleOnKeyDown");
+      }
+      function handleOnFocus() {
+        console.log("handleOnFocus");
+      }
+    </script>
+  </body>
+</html>
