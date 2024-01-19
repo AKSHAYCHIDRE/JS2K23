@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Method</title>
+  </head>
+  <body>
+    <script>
+      // at()
+      const atArray = ["Apply", "Orange", "Mango", "Kiwi"];
+      const atArrayMethod = atArray.at(2);
+      console.log(atArrayMethod, "atArray"); // mango
+      // concat()
+      const concatFruits = ["Apply", "Orange", "Mango", "Kiwi"];
+      const newConcatFreshFruits = ["Pinapal", "watermelon"];
+      const concat = concatFruits.concat(newConcatFreshFruits);
+      console.log(concat, "concatArray"); //["Apply", "Orange", "Mango", "Kiwi","Pinapal", "watermelon"];
+      // includes()
+      const includesFruits = ["Apply", "Orange", "Mango", "Kiwi"];
+      const includesArrayMethod = includesFruits.includes("pinaple");
+      console.log(includesArrayMethod, "includesArrayMethod"); // false
+      // indexOf()
+      const indexOfFruits = ["Apply", "Orange", "Mango", "Kiwi"];
+      const indexOfArrayMethod = indexOfFruits.indexOf("Mango");
+      console.log(indexOfArrayMethod, "indexOfArrayMethod"); // 2
+      // join()
+      const joinArray = ["Apply", "Orange", "Mango", "Kiwi"];
+      const joinArrayMethod = joinArray.join("and");
+      console.log(joinArrayMethod, "joinArrayMethod"); // ApplyandOrangeandMangoandKiwi
+      // length
+      const lengthArray = ["Apply", "Orange", "Mango", "Kiwi"];
+      const lengthArrayMethod = lengthArray.length;
+      console.log(lengthArrayMethod, "lengthArrayMethod"); // 4
+      // pop()
+      const popArray = ["Apply", "Orange", "Mango", "Kiwi"];
+      const popArrayMehod = popArray.pop();
+      console.log(popArrayMehod, "popArrayMehod"); // ["Apply", "Orange", "Mango"];
+      // push()
+      const pushArray = ["Apply", "Orange", "Mango", "Kiwi"];
+      const pushArrayMehod = pushArray.push("Pinaple");
+      console.log(pushArrayMehod, "pushArrayMehod"); // ["Apply", "Orange", "Mango", "Kiwi","Pinaple"];
+      // reverse()
+      const reverseArray = ["Apply", "Orange", "Mango", "Kiwi"];
+      const reverseArrayMethod = reverseArray.reverse();
+      console.log(reverseArrayMethod, "reverseArrayMethod"); // ["Kiwi", "Mango","Oragne", "Apply"]
+      // shift()
+      const shiftArray = ["Apply", "Orange", "Mango", "Kiwi"];
+      const shiftArrayMethod = shiftArray.shift();
+      console.log(shiftArrayMethod, "shiftArrayMethod"); // ["Orange", "Mango", "Kiwi"]
+      // string()
+      const stringArray = ["Apply", "Orange", "Mango", "Kiwi"];
+      const stringArrayMethod = stringArray.toString();
+      console.log(stringArrayMethod, "stringArrayMethod"); // Apply, Orange, Mango, Kiwi
+      // unShift()
+      const unShiftArray = ["Apply", "Orange", "Mango", "Kiwi"];
+      const unShiftArrayMethod = unShiftArray.unshift("Lemon", "Pineapple");
+      console.log(unShiftArrayMethod, "shiftArrayMethod"); // ["Lemon", "Pineapple","Orange", "Mango", "Kiwi"]
+    </script>
+  </body>
+</html>
