@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fat Arrow Function and normal function</title>
+  </head>
+  <body>
+    <ul>
+      <li>
+        Arguments not working with arrow function if we want use arguments we
+        need to use (...constructor)
+      </li>
+      <li>
+        no prototype with arrow function because he dont have own constructor
+      </li>
+      <li>new keyword is not working with arrow function</li>
+      <li>arrow function dont't have own this</li>
+    </ul>
+    <script>
+      // ----- arguments example with normal function
+      // function normalFunction(a, b) {
+      //   // return console.log(a + b);
+      //   return console.log(arguments, "normalFunction");
+      // }
+      // normalFunction(10, 20, 23, 23);
+
+      // ----- prototype example with normal function
+      // function normalFunction(a, b) {
+      //   return a + b;
+      //   // return console.log(arguments, "normalFunction");
+      // }
+      // console.log(normalFunction.prototype);
+
+      // ----- newKeyword example with normal function
+      function normalFunction(a, b) {
+        return a + b;
+      }
+      console.log(new normalFunction());
+
+      // ----- arguments example with fatArrow function
+      // const fatArrowFunction = (a, b) => {
+      //   // return console.log(a + b);
+      //   return console.log(arguments, "fatArrowFunction");
+      // };
+      // fatArrowFunction(10, 20, 23, 23);
+
+      // ----- arguments example with fatArrow function
+      // const fatArrowFunction = (...value) => {
+      //   // return console.log(a + b);
+      //   return console.log(value, "fatArrowFunction");
+      // };
+      // fatArrowFunction(10, 20, 23, 23);
+
+      // ----- prototype example with fatArrow function
+      // const fatArrowFunction = (a, b) => {
+      //   return a + b;
+      //   // return console.log(value, "fatArrowFunction");
+      // };
+      // console.log(fatArrowFunction.prototype);
+
+      // ----- newKeyword example with fatArrow function
+      // const fatArrowFunction = (a, b) => {
+      //   return a + b;
+      // };
+      // console.log(new fatArrowFunction());
+    </script>
+  </body>
+</html>

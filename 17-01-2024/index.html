@@ -21,9 +21,13 @@
       document.cookie =
         "surname= chidre; expires=Wed, 17 Jan 2024 07:42:00 GMT";
 
+      function isValid() {
+        return null;
+      }
+
       var g = 0;
-      g = 1 && g++;
-      console.log(g); // 0
+      const condition = isValid() && ++g && "ddd";
+      console.log(condition); // 0
     </script>
   </body>
 </html>

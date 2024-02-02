@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Array Method</title>
+    <title>Array Method and string method</title>
   </head>
   <body>
     <script>
@@ -54,8 +54,17 @@
       console.log(stringArrayMethod, "stringArrayMethod"); // Apply, Orange, Mango, Kiwi
       // unShift()
       const unShiftArray = ["Apply", "Orange", "Mango", "Kiwi"];
-      const unShiftArrayMethod = unShiftArray.unshift("Lemon", "Pineapple");
+      const unShiftArrayMethod = unShiftArray.unshift("Lemon");
       console.log(unShiftArrayMethod, "shiftArrayMethod"); // ["Lemon", "Pineapple","Orange", "Mango", "Kiwi"]
+
+      // match string method
+      let text = "The rain in SPAIN stays mainly in the plain";
+      let result = text.match("rain");
+      console.log(result, "matchStringMethod");
+      // matchAll string method
+      let textMatchAll = "The rain in SPAIN stays mainly in the plain";
+      let resultMatchAll = textMatchAll.match("rain");
+      console.log(resultMatchAll, "matchAllStringMethod");
     </script>
   </body>
 </html>

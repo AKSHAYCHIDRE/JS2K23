@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do Application</title>
+    <style>
+      body {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(
+            62deg,
+            rgba(1, 95, 183, 0.9732216701) 13%,
+            rgba(255, 122, 151, 0.5) 4%
+          ),
+          linear-gradient(
+            44deg,
+            rgba(0, 43, 99, 0.0792209024) 39%,
+            rgba(242, 140, 143, 0.5) 18%
+          ),
+          linear-gradient(
+            118deg,
+            rgba(84, 202, 242, 0.0315299727) 40%,
+            rgba(247, 155, 187, 0.5) 54%
+          ),
+          linear-gradient(
+            58deg,
+            rgba(90, 90, 237, 0.1614444357) 83%,
+            rgba(249, 156, 142, 0.5) 23%
+          );
+        background-blend-mode: normal, lighten, multiply, hard-light;
+        font-family: system-ui;
+        overflow: hidden;
+      }
+      .app-container {
+        border-radius: 8px;
+        width: 100%;
+        max-width: 480px;
+        max-height: 100%;
+        background-color: #10101d;
+        padding: 24px;
+        overflow: auto;
+      }
+      .app-header {
+        font-size: 20px;
+        line-height: 32px;
+        margin: 0 0 12px 0;
+        color: #fff;
+        text-transform: capitalize;
+      }
+      .task-input {
+        border-right: none;
+        width: 100%;
+        padding: 0 4px;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background-color: transparent;
+        margin-right: 12px;
+        color: #fff;
+        box-shadow: none;
+        border-radius: 0;
+      }
+      .inputWrapper {
+        display: flex;
+      }
+      .task-input {
+        font-size: 14px;
+        border: 1px solid;
+        border-radius: 6px;
+        padding: 9px 14px;
+      }
+      .button {
+        background-color: #eba6af;
+        color: white;
+        padding: 10px 30px;
+        font-family: system-ui;
+        border: 0;
+        border-radius: 6px;
+      }
+      li {
+        background-color: #191933;
+        border-radius: 4px;
+        margin-bottom: 12px;
+        display: flex;
+        color: #fff;
+        align-items: center;
+        padding: 8px;
+        justify-content: space-between;
+      }
+      .taskName {
+        color: #fff;
+      }
+      #toDolist {
+        padding: 0;
+      }
+      .errorMessage {
+        color: tomato;
+        font-size: 14px;
+      }
+      .button-wrapper,
+      .actionButtonWrapper {
+        display: flex;
+        gap: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="taskList" class="app-container">
+      <h1 class="app-header">TO DO LIST</h1>
+      <div class="inputWrapper">
+        <input
+          type="text"
+          autocomplete="off"
+          placeholder="Add New Task"
+          class="task-input"
+          id="inputValue"
+        />
+        <button id="add-button" class="button" onclick="addToDoList()">
+          Add
+        </button>
+        <button id="update-button" class="button" onclick="updateToDoList()">
+          Update
+        </button>
+      </div>
+      <ol id="toDolist"></ol>
+      <p id="error"></p>
+    </div>
+    <script>
+      let editableIndex = null;
+      const storedList = localStorage.getItem("toToList");
+      const toToList = storedList ? JSON.parse(storedList) : [];
+      const updateButton = document.getElementById("update-button");
+      updateButton.style.display = "none";
+      function renderTodo() {
+        const ol = document.getElementById("toDolist");
+        ol.innerHTML = "";
+
+        for (let i = 0; i < toToList.length; i++) {
+          const li = document.createElement("li");
+          const taskName = document.createElement("span");
+
+          const liEdit = document.createElement("li");
+          const input = document.createElement("input");
+          input.defaultValue = toToList[i];
+          liEdit.append(input);
+          const saveBtn = document.createElement("button");
+          const cancelBtn = document.createElement("button");
+          const actionButtonWrapper = document.createElement("div");
+          actionButtonWrapper.setAttribute("class", "actionButtonWrapper");
+
+          saveBtn.innerHTML = "Save";
+          cancelBtn.innerHTML = "Cancel";
+          liEdit.append(actionButtonWrapper);
+          actionButtonWrapper.append(saveBtn);
+          actionButtonWrapper.append(cancelBtn);
+          liEdit.style.display = "none";
+          // li.style.display = "none";
+          const buttonWrapper = document.createElement("div");
+          buttonWrapper.setAttribute("class", "button-wrapper");
+
+          saveBtn.addEventListener("click", function () {
+            toToList[i] = input.value;
+            renderTodo();
+          });
+
+          // delete button start
+          const deleteButton = document.createElement("button");
+          deleteButton.innerHTML = "Delete";
+          deleteButton.addEventListener("click", function () {
+            toToList.splice(i, 1);
+            ol.innerHTML = "";
+            renderTodo();
+          });
+
+          // Edit Button
+          const editButton = document.createElement("button");
+          editButton.innerHTML = "Edit";
+          editButton.addEventListener("click", function () {
+            liEdit.style.display = "flex";
+            li.style.display = "none";
+            // const addButton = document.getElementById("add-button");
+            // addButton.style.display = "none";
+            // const updateButton = document.getElementById("update-button");
+            // updateButton.style.display = "block";
+            // document.getElementById("inputValue").value = toToList[i];
+            // editableIndex = i;
+            // ol.innerHTML = "";
+
+            // renderTodo();
+          });
+
+          cancelBtn.addEventListener("click", function () {
+            liEdit.style.display = "none";
+            li.style.display = "flex";
+          });
+
+          taskName.innerHTML = "";
+          taskName.setAttribute("class", "taskName");
+          buttonWrapper.appendChild(deleteButton);
+          buttonWrapper.appendChild(editButton);
+          li.appendChild(taskName);
+          li.appendChild(buttonWrapper);
+          ol.appendChild(li);
+          ol.appendChild(liEdit);
+          taskName.innerHTML = toToList[i];
+        }
+        let string = JSON.stringify(toToList);
+        localStorage.setItem("toToList", string);
+      }
+      function addToDoList() {
+        const inputValues = document.getElementById("inputValue").value;
+        const errorMessage = document.getElementById("error");
+        errorMessage.setAttribute("class", "errorMessage");
+        errorMessage.innerHTML = "";
+        if (inputValues !== "") {
+          toToList.unshift(inputValues);
+          renderTodo();
+          document.getElementById("inputValue").value = "";
+        } else {
+          errorMessage.innerHTML = "Please the value";
+        }
+      }
+
+      function updateToDoList() {
+        const inputValues = document.getElementById("inputValue");
+        toToList[editableIndex] = inputValues.value;
+        editableIndex = null;
+        const addButton = document.getElementById("add-button");
+        addButton.style.display = "block";
+        const updateButton = document.getElementById("update-button");
+        updateButton.style.display = "none";
+        inputValues.value = "";
+        renderTodo();
+      }
+      renderTodo();
+    </script>
+  </body>
+</html>

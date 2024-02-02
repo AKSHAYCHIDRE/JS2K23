@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // delete()
+      const deleteFruits = ["Apple", "Banana", "Kiwi"];
+      delete deleteFruits[1];
+      console.log(deleteFruits, "deleteFruits"); // ["Apple", "Undifined", "Kiwi"];
+      // concat()
+      const concatFruits = ["Apple", "Banana", "Kiwi"];
+      const newConcatFruits = ["Mango"];
+      const freshConcatFruits = ["Orange"];
+      const concatResult = concatFruits.concat(
+        newConcatFruits,
+        freshConcatFruits
+      );
+      console.log(concatResult, "concatResult"); // ["Apple","Banana","Kiwi","Mango","Orange"]
+      // flat()
+      const flatDigit = [
+        [1, 1],
+        [23, 20, 24],
+        [5, 3, 5],
+      ];
+      const newFlat = flatDigit.flat();
+      console.log(newFlat, "newFlat"); // [1,1,23,20,24,5,3,5]
+      // slice
+      const sliceFruits = [
+        "Apple",
+        "Banana",
+        "Kiwi",
+        "Mango",
+        "Orange",
+        "watermelon",
+      ];
+      const sliceArray = sliceFruits.slice(2, 5);
+      console.log(sliceArray, "sliceArray"); // ["Kiwi", "Mango", "Orange"];
+      // splice
+      const spliceFruits = ["Apple", "Banana", "Kiwi", "watermelon"];
+      // spliceFruits.splice(2, 1, "Mango", "Orange");
+      // console.log(spliceFruits, "spliceFruits"); // ["Apple","Banana","Mango", "Orange","watermelon"]
+      // spliceFruits.splice(2, "Mango", "Orange");
+      // console.log(spliceFruits, "spliceFruits"); // ["Apple","Banana","Mango","Orange","Kiwi","watermelon"]
+      spliceFruits.splice(2);
+      console.log(spliceFruits, "spliceFruits"); // ["Apple","Banana"]
+      // indexOf()
+      const alphabate = ["a", "c", "d", "e", "f"];
+      const index = alphabate.indexOf("d");
+      console.log(index, "indexOf"); // 2
+      // lastIndexOf()
+      const lastIndexAlphabate = ["a", "v", "as", "b", "a", "f", "a"];
+      const lastIndexOfAlphabate = lastIndexAlphabate.lastIndexOf("a", 2);
+      console.log(lastIndexOfAlphabate); // 6
+      // includes()
+      const includesAges = [12, 112, 232, 34, 55, 34];
+      const ifFound = includesAges.includes(23);
+      console.log(ifFound); //false
+      // find()
+      const findAges = [12, 12, 343, 3, 34, 3, 24];
+      const arrayFindAges = findAges.find(function (item) {
+        return item > 12;
+      });
+      console.log(arrayFindAges);
+    </script>
+  </body>
+</html>
