@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Reverese Number
+      const revserArray = (array) => {
+        for (let i = array.length - 1; i >= 0; i--) {
+          console.log(array[i]);
+        }
+      };
+      const reverseArrayResult = revserArray("1234");
+
+      // Palindrome
+      const palindromeNumberFunction = (palindromArray) => {
+        let len = palindromArray.length - 1;
+        for (i = 0; i < palindromArray.length / 2; i++) {
+          if (palindromArray[i] != palindromArray[len - i]) {
+            console.log(palindromArray, "This is not palindrome number");
+          } else {
+            console.log(palindromArray, "This is a palindrome number");
+          }
+          return false;
+        }
+      };
+      const palindromeNumberResult = palindromeNumberFunction("121");
+
+      // Prime Number
+
+      const primeNumber = (from, to) => {
+        for (let i = from; i <= to; i++) {
+          let isPrime = true;
+          for (let j = 2; j < i; j++) {
+            if (i % j === 0) {
+              isPrime = false;
+            }
+          }
+          if (isPrime === true) {
+            console.log(i);
+          }
+        }
+      };
+      const primeNumberResult = primeNumber(0, 100);
+
+      // Asending order
+      const aseArray = (array) => {
+        for (let i = 0; i < array.length; i++) {
+          for (let j = i; j < array.length; j++) {
+            if (array[i] > array[j]) {
+              temp = array[i];
+              array[i] = array[j];
+              array[j] = temp;
+            }
+          }
+        }
+        console.log(array);
+      };
+
+      const aseArrayResult = aseArray([23, 43, 5, 24, 51, 41, 10]);
+    </script>
+  </body>
+</html>
