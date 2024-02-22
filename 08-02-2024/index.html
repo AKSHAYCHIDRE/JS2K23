@@ -8,20 +8,18 @@
   <body>
     <script>
       const myFunction = (list) => {
-        let result = [];
-        let zeros = [];
-
         for (let i = 0; i < list.length; i++) {
-          if (list[i] === 0) {
-            zeros.push(list[i]);
-          } else {
-            result.push(list[i]);
+          for (let j = 0; i < list.length; j++) {
+            if (list[i] > list[j]) {
+              let temp = list[i];
+              list[i] = list[j];
+              list[j] = temp;
+            }
           }
         }
-        return [...result, ...zeros];
       };
-      const output = myFunction([10, 5, 0, 2, 0, 3, 0]);
-      // [10,5,2,3,0,0,0]
+      const output = myFunction([10, 5, 230, 22, 02, 323, 2340]);
+
       console.log("output", output);
     </script>
   </body>
