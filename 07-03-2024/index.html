@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      button {
+        background: #ea0000;
+        transform: translateY(30px);
+        position: relative;
+        background: transparent;
+        box-sizing: border-box;
+        border-radius: 0.6rem;
+        align-self: center;
+        font-size: 17px;
+        font-weight: 400;
+        margin: 20px;
+        padding: 20px 40px;
+        text-align: center;
+        color: red;
+        font-family: Pangolin;
+        font-weight: bold;
+        cursor: pointer;
+        /* top: 50%; */
+        text-transform: uppercase;
+      }
+      .animation {
+        animation: vibrate 100ms ease-in-out;
+        animation-iteration-count: 7;
+      }
+      #loader {
+        position: absolute;
+        bottom: 0;
+      }
+      @keyframes vibrate {
+        0% {
+          transform: rotate(7deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button id="button">Add to Cart</button>
+    <p id="loader"></p>
+    <p id="time"></p>
+    <button onclick="close"></button>
+    <script>
+      const interval = setInterval(() => {
+        const addToCardButton = document.getElementById("button");
+        addToCardButton.setAttribute("class", "animation");
+        setTimeout(() => {
+          addToCardButton.removeAttribute("class", "animation");
+        }, 1000);
+      }, 5000);
+
+      setTimeout(() => {
+        const loader = document.getElementById("loader");
+        loader.innerHTML = "This is test message";
+      }, 1000);
+
+      let count = 0;
+      const timeInterval = setInterval(() => {
+        count = count + 1;
+        const time = document.getElementById("time");
+        time.innerHTML = count;
+      }, 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+      .form {
+        background: #fff;
+        display: flex;
+        width: 1100px;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+        margin: 95px auto;
+      }
+      .formInnerWrapper {
+        width: 100%;
+        padding: 50px 50px 40px;
+      }
+      .right-section {
+        border-left: 1px solid #ccc;
+      }
+      h3 {
+        margin-bottom: 30px;
+      }
+      .formGroupWrapper {
+        display: flex;
+        gap: 20px;
+      }
+      .formControl {
+        display: block;
+        width: 100%;
+        padding: 11px 11px;
+        font-weight: 500;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-family: "Montserrat", sans-serif;
+      }
+      .formControl:focus,
+      .formControl:focus {
+        border: 1px solid #4835d4;
+      }
+      .formControl:focus-visible {
+        outline: #4835d4 auto 0px;
+      }
+      .formGroup {
+        width: 100%;
+        position: relative;
+        margin-bottom: 30px;
+      }
+      label {
+        font-size: 12px;
+        margin-bottom: 5px;
+        text-transform: capitalize;
+        display: block;
+      }
+      .radioGroup {
+        display: flex;
+        gap: 30px;
+        margin-top: 15px;
+      }
+      .radio {
+        display: flex;
+        align-items: center;
+      }
+      .radio label {
+        margin-left: 15px;
+        margin-bottom: 0;
+      }
+      a {
+        color: #4835d4;
+        font-size: 14px;
+      }
+      .rule {
+        font-size: 14px;
+      }
+      .termsAndCondition {
+        margin-top: 20px;
+      }
+      .submitButton {
+        background: #4835d4;
+        border-radius: 4px;
+        /* box-shadow: 0 6px 17px 0 rgba(0, 0, 0, 0.15); */
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        font-weight: 700;
+        font-size: 15px;
+        padding: 14px 40px;
+      }
+      .submitButton.disabled {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+      .buttonWrapper {
+        margin-top: 50px;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .container {
+        display: block;
+        position: relative;
+        padding-left: 12px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 17px;
+        width: 17px;
+        background-color: transparent;
+        border: 1px solid #e5e5e5;
+        position: absolute;
+      }
+      .container:hover input ~ .checkmark {
+        background-color: transparent;
+      }
+      .container input:checked ~ .checkmark {
+        background-color: transparent;
+      }
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+      .container input:checked ~ .checkmark:after {
+        display: block;
+      }
+      .container .checkmark:after {
+        left: 4px;
+        top: 0;
+        width: 5px;
+        height: 10px;
+        border: solid #4835d4;
+        border-width: 0 1px 1px 0;
+        transform: rotate(45deg);
+      }
+      .error {
+        color: #ff0000;
+        font-size: 12px;
+        margin-top: 5px;
+        position: absolute;
+        bottom: -20px;
+      }
+      .error + label {
+        color: #ff0000;
+      }
+      .error:empty + label {
+        color: unset;
+      }
+      .error + label + .formControl {
+        border: 1px solid #ff0000;
+      }
+      .error:empty + label + .formControl {
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="form" onsubmit="formSubmit()">
+      <div class="formInnerWrapper">
+        <h3>General Infomation</h3>
+        <div class="formGroupWrapper">
+          <div class="formGroup">
+            <p id="positionListErrorMessage"></p>
+            <label for="">Position *</label>
+            <select name="positionList" class="formControl">
+              <option value=""></option>
+              <option value="UI Designer">UI Designer</option>
+              <option value="UI Developer">UI Developer</option>
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Backend Developer">Backend Developer</option>
+            </select>
+          </div>
+        </div>
+        <div class="formGroupWrapper">
+          <div class="formGroup">
+            <p id="firstNameErrorMessage"></p>
+            <label for="">First Name *</label>
+            <input
+              type="text"
+              class="formControl"
+              id="firstName"
+              pattern="[A-Z]"
+              name="firstName"
+              onkeyup="checkValidationForFirstName()"
+            />
+          </div>
+          <div class="formGroup">
+            <p id="lastNameErrorMessage"></p>
+            <label for="">last Name *</label>
+            <input
+              type="text"
+              class="formControl"
+              id="lastName"
+              name="lastName"
+              onkeyup="onChange()"
+            />
+          </div>
+        </div>
+        <div class="formGroupWrapper">
+          <div class="formGroup">
+            <p id="qualificationErrorMessage"></p>
+            <label for="">qualification *</label>
+            <select name="qualification" class="formControl">
+              <option value=""></option>
+              <option value="graduate">Graduate</option>
+              <option value="postgraduate">Postgraduate</option>
+            </select>
+          </div>
+        </div>
+        <div class="formGroupWrapper">
+          <div class="formGroup">
+            <p id="experienceErrorMessage"></p>
+            <label for="">Experience *</label>
+            <input
+              type="text"
+              class="formControl"
+              name="experience"
+              id="experience"
+            />
+          </div>
+          <div class="formGroup">
+            <p id="organizationNameErrorMessage"></p>
+            <label for="">Organization Name *</label>
+            <input
+              type="text"
+              name="organizationName"
+              class="formControl"
+              id="organizationName"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="formInnerWrapper right-section">
+        <h3>Contact Details</h3>
+        <div class="formGroupWrapper">
+          <div class="formGroup">
+            <p id="emailIdErrorMessage"></p>
+            <label for="">Email-Id *</label>
+            <input
+              type="text"
+              class="formControl"
+              name="emailId"
+              id="emailId"
+              onkeyup="onChange()"
+            />
+          </div>
+          <div class="formGroup">
+            <p id="mobileNoErrorMessage"></p>
+            <label for="">Mobile No *</label>
+            <input
+              type="text"
+              name="mobileNo"
+              class="formControl"
+              id="mobileNo"
+            />
+          </div>
+        </div>
+        <div class="formGroupWrapper">
+          <div class="formGroup">
+            <p id="permanentAddressErrorMessage"></p>
+            <label for="">Permanent Address *</label>
+            <input
+              type="text"
+              name="permanentAddress"
+              id="permanentAddress"
+              class="formControl"
+            />
+          </div>
+        </div>
+        <div class="formGroupWrapper">
+          <div class="formGroup">
+            <p id="birthDateErrorMessage"></p>
+            <label for="">Birth Date *</label>
+            <input
+              type="date"
+              name="birthDate"
+              id="birthDate"
+              class="formControl"
+            />
+          </div>
+          <div class="formGroup">
+            <label for="">Gender *</label>
+            <div class="radioGroup">
+              <div class="radio">
+                <input type="radio" id="gender" name="gender" value="male" />
+                <label for="male">Male</label> 
+              </div>
+              <div class="radio">
+                <input type="radio" id="gender" name="gender" value="female" />
+                <label for="female">Female</label> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="formGroupWrapper termsAndCondition">
+          <label class="container">
+            <input
+              type="checkbox"
+              id="acceptPolicy"
+              onchange="handleAcceptPolycy()"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <p class="rule">
+            I do accept the <a href="#" class="text">Terms and Conditions</a> of
+            your site.
+          </p>
+        </div>
+        <div class="buttonWrapper">
+          <button type="submit" id="submitButton" class="submitButton" disabled>
+            Apply
+          </button>
+        </div>
+      </div>
+    </form>
+    <script>
+      let isFormSubmit = false;
+
+      const checkValidationForFirstName = (e) => {
+        if (isFormSubmit) {
+          const firstName = event.target.value;
+          const firstNameErrorMessage = document.getElementById(
+            "firstNameErrorMessage"
+          );
+          firstNameErrorMessage.setAttribute("class", "error");
+          firstNameErrorMessage.innerHTML = "";
+          if (firstName == "") {
+            firstNameErrorMessage.innerHTML = "Please enter the value";
+          } else {
+            firstNameErrorMessage.innerHTML = "";
+          }
+        }
+      };
+
+      const submitButton = document.getElementById("submitButton");
+      const handleAcceptPolycy = () => {
+        const value = document.getElementById("acceptPolicy").checked;
+        if (value) {
+          submitButton.removeAttribute("disabled");
+        } else {
+          submitButton.setAttribute("disabled", "true");
+        }
+      };
+      const formSubmit = (e) => {
+        event.preventDefault();
+        isFormSubmit = true;
+        // firstName
+        // const value = event.target.firstName.value;
+        // const name = event.target.firstName.name;
+
+        const firstName = event.target.firstName.value;
+        const firstNameErrorMessage = document.getElementById(
+          "firstNameErrorMessage"
+        );
+        firstNameErrorMessage.setAttribute("class", "error");
+        firstNameErrorMessage.innerHTML = "";
+        if (firstName == "") {
+          firstNameErrorMessage.innerHTML = "Please enter the value";
+        } else {
+          firstNameErrorMessage.innerHTML = "";
+        }
+
+        // lastName
+        const lastName = event.target.lastName.value;
+        const lastNameErrorMessage = document.getElementById(
+          "lastNameErrorMessage"
+        );
+        lastNameErrorMessage.setAttribute("class", "error");
+        lastNameErrorMessage.innerHTML = "";
+        if (lastName == "") {
+          lastNameErrorMessage.innerHTML = "Please enter the value";
+        } else {
+          lastNameErrorMessage.innerHTML = "";
+        }
+
+        // qualification
+        const qualification = event.target.qualification.value;
+        const qualificationErrorMessage = document.getElementById(
+          "qualificationErrorMessage"
+        );
+        qualificationErrorMessage.setAttribute("class", "error");
+        qualificationErrorMessage.innerHTML = "";
+        if (qualification == "") {
+          qualificationErrorMessage.innerHTML = "Please enter the value";
+        } else {
+          qualificationErrorMessage.innerHTML = "";
+        }
+
+        // experience
+        const experience = event.target.experience.value;
+        const experienceErrorMessage = document.getElementById(
+          "experienceErrorMessage"
+        );
+        experienceErrorMessage.setAttribute("class", "error");
+        experienceErrorMessage.innerHTML = "";
+        if (experience == "") {
+          experienceErrorMessage.innerHTML = "Please enter the value";
+        } else {
+          experienceErrorMessage.innerHTML = "";
+        }
+
+        // organizationName
+        const organizationName = event.target.organizationName.value;
+        const organizationNameErrorMessage = document.getElementById(
+          "organizationNameErrorMessage"
+        );
+        organizationNameErrorMessage.setAttribute("class", "error");
+        organizationNameErrorMessage.innerHTML = "";
+        if (organizationName == "") {
+          organizationNameErrorMessage.innerHTML = "Please enter the value";
+        } else {
+          organizationNameErrorMessage.innerHTML = "";
+        }
+
+        // emailId
+        const emailId = event.target.emailId.value;
+        const emailIdErrorMessage = document.getElementById(
+          "emailIdErrorMessage"
+        );
+        emailIdErrorMessage.setAttribute("class", "error");
+        emailIdErrorMessage.innerHTML = "";
+        if (emailId == "") {
+          emailIdErrorMessage.innerHTML = "Please enter the value";
+        } else {
+          emailIdErrorMessage.innerHTML = "";
+        }
+
+        // mobileNo
+        const mobileNo = event.target.mobileNo.value;
+        const mobileNoErrorMessage = document.getElementById(
+          "mobileNoErrorMessage"
+        );
+        mobileNoErrorMessage.setAttribute("class", "error");
+        mobileNoErrorMessage.innerHTML = "";
+        if (mobileNo == "") {
+          mobileNoErrorMessage.innerHTML = "Please enter the value";
+        } else {
+          mobileNoErrorMessage.innerHTML = "";
+        }
+
+        // permanentAddress
+        const permanentAddress = event.target.permanentAddress.value;
+        const permanentAddressErrorMessage = document.getElementById(
+          "permanentAddressErrorMessage"
+        );
+        permanentAddressErrorMessage.setAttribute("class", "error");
+        permanentAddressErrorMessage.innerHTML = "";
+        if (permanentAddress == "") {
+          permanentAddressErrorMessage.innerHTML = "Please enter the value";
+        } else {
+          permanentAddressErrorMessage.innerHTML = "";
+        }
+
+        // birthDate
+        const birthDate = event.target.birthDate.value;
+        const birthDateErrorMessage = document.getElementById(
+          "birthDateErrorMessage"
+        );
+        birthDateErrorMessage.setAttribute("class", "error");
+        birthDateErrorMessage.innerHTML = "";
+        if (birthDate == "") {
+          birthDateErrorMessage.innerHTML = "Please enter the value";
+        } else {
+          birthDateErrorMessage.innerHTML = "";
+        }
+
+        // positionList
+        const positionList = event.target.positionList.value;
+        const positionListErrorMessage = document.getElementById(
+          "positionListErrorMessage"
+        );
+        positionListErrorMessage.setAttribute("class", "error");
+        positionListErrorMessage.innerHTML = "";
+        if (positionList == "") {
+          positionListErrorMessage.innerHTML = "Please enter the value";
+        } else {
+          positionListErrorMessage.innerHTML = "";
+        }
+
+        const gender = event.target.gender.value;
+
+        console.log(event.target);
+
+        const dataObject = {
+          positionList: positionList,
+          firstName: firstName,
+          lastName: lastName,
+          experience: experience,
+          qualification: qualification,
+          organizationName: organizationName,
+          emailId: emailId,
+          mobileNo: mobileNo,
+          permanentAddress: permanentAddress,
+          birthDate: birthDate,
+          gender: gender,
+        };
+        console.log(dataObject);
+      };
+
+      const onChange = (e) => {
+        // console.log(e.target.name, e.target.vale);
+      };
+    </script>
+  </body>
+</html>
