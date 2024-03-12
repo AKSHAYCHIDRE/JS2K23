@@ -47,33 +47,59 @@
           transform: rotate(0deg);
         }
       }
+      .timerWrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      .timerWrapper p {
+        margin: 0;
+        height: 200px;
+        width: 200px;
+        border: 1px solid;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 60px;
+      }
     </style>
   </head>
   <body>
-    <button id="button">Add to Cart</button>
-    <p id="loader"></p>
-    <p id="time"></p>
-    <button onclick="close"></button>
+    <!-- <button id="button">Add to Cart</button> -->
+    <!-- <p id="loader"></p> -->
+    <div class="timerWrapper">
+      <p id="time"></p>
+      <button onclick="closeTimer()">Stop Timer</button>
+    </div>
     <script>
-      const interval = setInterval(() => {
-        const addToCardButton = document.getElementById("button");
-        addToCardButton.setAttribute("class", "animation");
-        setTimeout(() => {
-          addToCardButton.removeAttribute("class", "animation");
-        }, 1000);
-      }, 5000);
+      // ------------//------------//
+      // const interval = setInterval(() => {
+      //   const addToCardButton = document.getElementById("button");
+      //   addToCardButton.setAttribute("class", "animation");
+      //   setTimeout(() => {
+      //     addToCardButton.removeAttribute("class", "animation");
+      //   }, 1000);
+      // }, 5000);
 
-      setTimeout(() => {
-        const loader = document.getElementById("loader");
-        loader.innerHTML = "This is test message";
-      }, 1000);
+      // ------------//------------//
+      // setTimeout(() => {
+      //   const loader = document.getElementById("loader");
+      //   loader.innerHTML = "This is test message";
+      // }, 1000);
 
-      let count = 0;
+      // ------------//------------//
+      let count = localStorage.getItem("timerCount")
+        ? parseInt(localStorage.getItem("timerCount"))
+        : 0;
       const timeInterval = setInterval(() => {
         count = count + 1;
         const time = document.getElementById("time");
         time.innerHTML = count;
       }, 1000);
+      const closeTimer = () => {
+        clearInterval(timeInterval);
+        localStorage.setItem("timerCount", count);
+      };
     </script>
   </body>
 </html>
